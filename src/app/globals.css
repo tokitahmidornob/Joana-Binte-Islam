@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Nature & Forest Theme - Light Mode */
+  --background: #fdfbf7;           /* Warm soft cream / ivory */
+  --foreground: #0f291e;           /* Deep forest pine green */
+  --card: #ffffff;                 /* Pure crisp card */
+  --card-muted: #f4f7f4;           /* Soft sage tint */
+  --card-border: #e2e8e2;          /* Light organic border */
+  --card-border-hover: #1b4332;    /* Deep emerald hover border */
+  --muted: #52796f;                /* Muted forest green */
+  --muted-foreground: #2d6a4f;     /* Mid forest text */
+  --accent: #1b4332;               /* Rich emerald accent */
+  --accent-light: #2d6a4f;         /* Forest green */
+  --accent-mint: #52b788;          /* Vibrant mint */
+  --accent-foreground: #fdfbf7;    /* Contrast text on accent */
+  --tag-bg: #edf5f0;               /* Pale mint pill background */
+  --tag-border: #d1e5db;           /* Pill border */
+}
+
+.dark {
+  /* Nature & Forest Theme - Dark Mode */
+  --background: #0a1911;           /* Very deep rich forest green */
+  --foreground: #e2e8f0;           /* Soft sage / off-white */
+  --card: #102418;                 /* Slightly lighter forest card */
+  --card-muted: #152e1f;           /* Card highlight */
+  --card-border: #1c3b29;          /* Deep forest border */
+  --card-border-hover: #52b788;    /* Vibrant mint hover */
+  --muted: #8ca395;                /* Muted sage */
+  --muted-foreground: #a3b899;     /* Soft lichen green */
+  --accent: #52b788;               /* Vibrant emerald / mint */
+  --accent-light: #74c69d;         /* Glowing mint */
+  --accent-mint: #52b788;          /* Core emerald accent */
+  --accent-foreground: #0a1911;    /* Deep green on accent */
+  --tag-bg: #132a1c;               /* Dark forest pill background */
+  --tag-border: #214530;           /* Dark pill border */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-mint: var(--accent-mint);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Organic Selection */
+::selection {
+  background: var(--accent-mint);
+  color: #0a1911;
+}
+
+/* Smooth Universal Theme Transition */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Custom Forest Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-mint);
+}
+
+/* Masonry Layout Break-inside Prevention */
+.masonry-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+}
